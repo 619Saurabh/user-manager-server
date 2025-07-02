@@ -30,14 +30,6 @@ app.post('/api/users', (req, res) => {
   res.status(201).json(newUser);
 });
 
-// Edit a user
-app.put('/api/users/:id', (req, res) => {
-  const id = Number(req.params.id);
-  const { name, email } = req.body;
-  const newUser = { id: Date.now(), name, email };
-  users.push(newUser);
-  res.status(201).json(newUser);
-});
 
 // Delete a user
 app.delete('/api/users/:id', (req, res) => {
