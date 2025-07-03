@@ -8,7 +8,7 @@ app.use(cors());
 app.use(express.json());
 
 let users = [
-  { id: 1, name: 'John Doe', email: 'john@example.com' },
+  { id: 1, name: 'Saurabh Bisht', email: 'saurabh123@yahoo.com' },
 ];
 
 app.get('/', (req, res) => {
@@ -28,10 +28,30 @@ app.post('/api/users', (req, res) => {
   res.status(201).json(newUser);
 });
 
+//Edit a user
+app.put('/api/users/:id', (req, res) => {
+  const id = Number(req.params.id);
+  const { name, email } = req.body;
+
+  // Find the user
+  const userIndex = users.findIndex((user) => user.id === id);
+
+  // // If user not found
+  // if (userIndex === -1) {
+  //   return res.status(404).json({ error: 'User not found' });
+  // }
+
+  // Update the user
+  users[userIndex] = { ...users[userIndex], name, email };
+
+  // Return updated user
+  res.status(200).json(users[userIndex]);
+});
+
 // Delete a user
 app.delete('/api/users/:id', (req, res) => {
   const id = Number(req.params.id);
-  users = users.filter(user => user.id !== id);
+  users = users.filter((user) => user.id !== id);
   res.status(204).send();
 });
 
