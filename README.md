@@ -1,1 +1,1 @@
-A simple Node.js + Express.js REST API for managing users (Create, Read, and Delete).  
+A simple Node.js + Express.js REST API for managing users (Create, Read, Update and Delete).  
