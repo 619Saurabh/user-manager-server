@@ -12,7 +12,7 @@ let users = [
 ];
 
 app.get('/', (req, res) => {
-  res.send('API Server is running...');
+  res.send('Server is running...');
 });
 
 // Get all users
@@ -55,6 +55,16 @@ app.delete('/api/users/:id', (req, res) => {
   res.status(204).send();
 });
 
-app.listen(PORT, () => {
-  console.log(`Server running on http://localhost:${PORT}`);
-});
+if (require.main === module) {
+  app.listen(PORT, () => {
+    console.log(`Server running on http://localhost:${PORT}`);
+  });
+}
+
+// app.listen(PORT, () => {
+//   console.log(`Server running on http://localhost:${PORT}`);
+// });
+
+
+
+module.exports = app;
